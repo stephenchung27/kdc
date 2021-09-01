@@ -28,7 +28,11 @@ class Route:
 
     @property
     def successful(self):
-        return self.value_state.time <= 0
+        return self.valid and self.value_state.time == 0
+
+    @property
+    def valid(self):
+        return self.value_state.valid
 
     @property
     def took_home(self):
@@ -37,10 +41,6 @@ class Route:
     @property
     def took_airport(self):
         return self.contains(BoardSpaceType.A)
-
-    @property
-    def valid(self):
-        return self.value_state.valid
 
     def contains(self, action_type):
         for action in self.route:

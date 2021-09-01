@@ -7,6 +7,58 @@ class KarutaDateCalculator:
     def __init__(self):
         self.possible_routes = []
 
+    def calculate_all_possible_routes(self):
+        def recurse(direction, current_road, route, step=0, visited=None):
+            if visited is None:
+                visited = dict()
+
+            if route.successful:
+                self.possible_routes.append(route)
+                return
+
+            # Add to possible_routes if Shopping Mall or Jewelry Store
+            if not route.valid:
+                if route.contains(BoardSpaceType.M) or \
+                        route.contains(BoardSpaceType.E):
+                    self.possible_routes.append(route)
+                return
+
+            for action in current_road.available_actions(direction):
+                new_route = route.copy()
+                new_visited = visited.copy()
+
+                if action.action_type in BoardSpaceType:
+                    if action.action not in new_visited:
+                        new_visited[action.action] = step
+                    elif step - new_visited[action.action] > 10:
+                        new_visited[action.action] = step
+                    else:
+                        continue
+
+                # Action has been added to new_route after this point
+                new_route.add_action(action)
+
+                if action.action_type in Direction:
+                    recurse(action.action_type, action.action, new_route,
+                            step + 1, new_visited)
+                elif action.action_type in BoardSpaceType:
+                    # Add to possible_routes if Home or Airport
+                    if action.action_type in (BoardSpaceType.H,
+                                              BoardSpaceType.A):
+                        self.possible_routes.append(new_route)
+                        continue
+
+                    recurse(direction, current_road, new_route, step + 1,
+                            new_visited)
+
+        recurse(self.initial_direction, self.initial_road, Route())
+
+    def __call__(self, json_board, initial_direction):
+        board_parser = BoardParser(json_board)
+        self.initial_road = board_parser.horizontal_roads[-1][2]
+        self.initial_direction = initial_direction
+        self.calculate_all_possible_routes()
+
     @property
     def best_successful_route(self):
         successful_routes = [
@@ -67,6 +119,20 @@ class KarutaDateCalculator:
             return None
 
     @property
+    def best_route_with_shopping_and_home(self):
+        non_successful_routes = [
+            route
+            for route in self.possible_routes
+            if route.contains(BoardSpaceType.M) and
+            route.contains(BoardSpaceType.H)
+        ]
+
+        if non_successful_routes:
+            return min(non_successful_routes, key=len)
+        else:
+            return None
+
+    @property
     def best_route_with_jewelry_store(self):
         successful_routes = [
             route
@@ -113,43 +179,3 @@ class KarutaDateCalculator:
             return max(airport_routes or [])
         else:
             return None
-
-    def calculate_all_possible_routes(self):
-        def recurse(direction, current_road, route, step=1):
-            if route.valid and route.successful:
-                self.possible_routes.append(route)
-                return
-
-            if not route.valid:
-                if route.contains(BoardSpaceType.M) or \
-                        route.contains(BoardSpaceType.E):
-                    self.possible_routes.append(route)
-                return
-
-            for action in current_road.available_actions(direction, step):
-                new_route = route.copy()
-
-                if isinstance(action.action_type, BoardSpaceType):
-                    action.action.visit(step)
-
-                new_route.add_action(action)
-
-                if isinstance(action.action_type, Direction):
-                    recurse(action.action_type, action.action, new_route, step + 1)
-
-                elif isinstance(action.action_type, BoardSpaceType) and \
-                        action.action.available(step):
-                    if action.action_type in (BoardSpaceType.H, BoardSpaceType.A):
-                        self.possible_routes.append(new_route)
-                        continue
-
-                    recurse(direction, current_road, new_route, step + 1)
-
-        recurse(self.initial_direction, self.initial_road, Route())
-
-    def __call__(self, json_board, initial_direction):
-        board_parser = BoardParser(json_board)
-        self.initial_road = board_parser.horizontal_roads[-1][2]
-        self.initial_direction = initial_direction
-
-        self.calculate_all_possible_routes()

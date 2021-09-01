@@ -172,6 +172,6 @@ def test_parse_board_spaces(board_spaces, board_parser_with_json):
 
     assert len(bp.vertical_roads[2][1].board_space_actions) == 2
     assert BoardSpaceType(board_spaces[2][0]) in [
-        action.action_type for action in bp.vertical_roads[2][1].available_actions(mock_direction, 1)]
+        action.action_type for action in bp.vertical_roads[2][1].available_actions(mock_direction)]
     assert BoardSpaceType(board_spaces[2][1]) in [
-        action.action_type for action in bp.vertical_roads[2][1].available_actions(mock_direction, 1)]
+        action.action_type for action in bp.vertical_roads[2][1].available_actions(mock_direction)]

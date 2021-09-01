@@ -10,8 +10,8 @@ class Road():
     def __getitem__(self, key):
         return self.road_actions[key]
 
-    def add_board_space_action(self, board_space):
-        board_space_action = Action(board_space)
+    def add_board_space_action(self, board_space, board_space_type):
+        board_space_action = Action(board_space, board_space_type)
         self.board_space_actions.append(board_space_action)
 
     def add_road_action(self, road, facing_direction, going_direction):
@@ -32,10 +32,6 @@ class Road():
                 if road_action.action is road:
                     self.road_actions[direction].remove(road_action)
 
-    def available_board_space_actions(self, step):
-        # import pdb; pdb.set_trace()
-        return [action for action in self.board_space_actions if action.action.available(step)]
-
-    def available_actions(self, direction, step):
-        return self.available_board_space_actions(step) + \
+    def available_actions(self, direction):
+        return self.board_space_actions + \
             self.available_road_actions(direction)

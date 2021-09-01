@@ -1,4 +1,4 @@
-from karuta_date_calculator import KarutaDateCalculator
+from kdc import KarutaDateCalculator
 from constants import Direction
 
 

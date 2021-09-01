@@ -1,14 +1,20 @@
 from constants import Direction, BoardSpaceType
+import pdb
 
 
 class Action:
     def __init__(self, action, action_type=None):
         self.action = action
-        if action_type is None and isinstance(action.action_type, BoardSpaceType):
-            self.action_type = action.action_type
-        else:
+
+        if action_type in Direction:
             self.action_type = action_type
+        elif action.action_type in BoardSpaceType:
+            self.action_type = action.action_type
+
         self.determine_values(self.action_type)
+
+    def __str__(self):
+        return self.action_type.value
 
     def determine_values(self, action_type):
         if action_type == BoardSpaceType.G:
@@ -30,7 +36,7 @@ class Action:
         elif action_type == BoardSpaceType.L:
             self.set_values(entertainment=92)
         elif action_type == BoardSpaceType.B:
-            self.set_values(entertainment=92)
+            self.set_values(food=-14, drink=-21, entertainment=92)
         elif action_type == BoardSpaceType.R:
             self.set_values(entertainment=52)
         elif action_type == BoardSpaceType.A:
@@ -42,13 +48,10 @@ class Action:
         elif action_type == BoardSpaceType.H:
             self.set_values()
         elif isinstance(action_type, Direction):
-            self.set_values()
+            self.set_values(fuel=-10)
 
-    def set_values(self, fuel=-10, food=-4, drink=-6, entertainment=-8):
+    def set_values(self, fuel=0, food=-4, drink=-6, entertainment=-8):
         self.fuel = fuel
         self.food = food
         self.drink = drink
         self.entertainment = entertainment
-
-    def __str__(self):
-        return self.action_type.value
