@@ -2,6 +2,22 @@ from kdc import KarutaDateCalculator
 from constants import Direction
 
 
+Gas = "Gas Station"
+Italian = "Italian"           # P for sPaghetti
+Taco = "Taco"
+Sandwich = "Sandwich Shop"
+Fair = "Fair"
+Juice = "Juice"
+Coffee = "Coffee"
+Nightclub = "Nightclub"
+Flower = "Flower Garden"     # L for fLower garden
+Ballroom = "Ballroom"
+Theatre = "Theatre"           # R for theatRe
+Airport = "Airport"
+Ring = "Jewelry Store"     # E for jEwelry store
+Mall = "Shopping Mall"     # M for Mall
+Home = "Home"
+
 blank_board = {
     "horizontal_roads": [
         [True, True, True, True, True],
@@ -388,7 +404,199 @@ stephen_6 = {
     "direction": Direction.R
 }
 
-board = stephen_6
+eric_2 = {
+    "horizontal_roads": [
+        [True, True, True, True, True],
+        [False, False, False, True, True],
+        [False, True, True, True, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [True, True, True, False, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+    ],
+    "vertical_roads": [
+        [True, True, True, True, True, True],
+        [True, True, True, True, False, True],
+        [True, True, False, False, True, True],
+        [True, False, False, True, True, True],
+        [True, True, True, True, True, True],
+        [True, True, False, True, True, True],
+        [True, True, True, True, True, True],
+    ],
+    "board_spaces": [
+        ["Airport", "Taco", None, None, None],
+        ["Gas Station", None, None, "Ballroom", None],
+        ["Theatre", None, None, None, "Home"],
+        [None, None, None, None, "Gas Station"],
+        ["Gas Station", "Sandwich Shop", None, None, "Italian"],
+        ["Nightclub", None, None, None, None],
+        ["Juice", "Fair", "Flower Garden", None, "Coffee"]
+    ],
+    "direction": Direction.L
+}
+
+stephen_7 = {
+    "horizontal_roads": [
+        [True, True, True, True, True],
+        [True, True, True, False, True],
+        [True, True, True, False, True],
+        [True, True, False, False, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [False, False, True, False, True],
+        [True, True, True, True, True],
+    ],
+    "vertical_roads": [
+        [True, True, True, True, True, True],
+        [True, False, True, True, True, True],
+        [True, True, True, True, True, True],
+        [True, False, True, True, True, True],
+        [True, False, False, False, True, True],
+        [True, True, True, True, True, True],
+        [True, True, True, True, True, True],
+    ],
+    "board_spaces": [
+        [Theatre, Juice, Sandwich, None, None],
+        [None, None, None, Gas, Taco],
+        [Airport, None, None, None, None],
+        [None, Flower, None, Gas, None],
+        [None, Fair, None, None, None],
+        [Coffee, None, Ballroom, None, Nightclub],
+        [Gas, None, None, Home, Italian]
+    ],
+    "direction": Direction.L
+}
+
+joe_3 = {
+    "horizontal_roads": [
+        [True, True, True, True, True],
+        [True, True, False, True, True],
+        [True, True, True, True, True],
+        [True, False, False, True, True],
+        [True, True, False, True, True],
+        [True, True, True, True, True],
+        [False, False, True, True, True],
+        [True, True, True, True, True],
+    ],
+    "vertical_roads": [
+        [True, False, True, True, True, True],
+        [True, False, True, True, False, True],
+        [True, True, True, True, False, True],
+        [True, True, True, True, True, True],
+        [True, True, True, True, True, True],
+        [True, True, True, False, True, True],
+        [True, True, True, True, True, True],
+    ],
+    "board_spaces": [
+        [None, None, None, None, None],
+        [None, Sandwich, Gas, Airport, Juice],
+        [None, Ballroom, Gas, Fair, None],
+        [None, Flower, None, Coffee, None],
+        [Nightclub, Home, None, Italian, None],
+        [None, None, None, None, None],
+        [Gas, Taco, Theatre, None, None]
+    ],
+    "direction": Direction.R
+}
+
+ryan_3 = {
+    "horizontal_roads": [
+        [True, True, True, True, True],
+        [False, True, True, False, True],
+        [True, True, True, True, True],
+        [True, True, False, True, True],
+        [False, True, True, True, True],
+        [False, True, True, True, True],
+        [False, False, True, False, True],
+        [True, True, True, True, True],
+    ],
+    "vertical_roads": [
+        [True, True, True, True, True, True],
+        [True, True, False, True, True, True],
+        [True, False, True, True, True, True],
+        [True, True, True, True, True, True],
+        [True, True, False, True, False, True],
+        [True, True, True, True, True, True],
+        [True, True, True, True, True, True],
+    ],
+    "board_spaces": [
+        [None, None, Airport, Gas, None],
+        [None, None, Fair, Home, Nightclub],
+        [None, Juice, None, None, Taco],
+        [Theatre, Flower, None, None, Italian],
+        [None, None, None, None, None],
+        [None, None, Gas, Coffee, Ballroom],
+        [Sandwich, None, None, None, Gas]
+    ],
+    "direction": Direction.R
+}
+
+joe_4 = {
+    "horizontal_roads": [
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [True, False, True, True, True],
+        [True, False, True, True, True],
+        [True, False, False, True, True],
+        [False, True, False, True, True],
+        [True, True, True, True, True],
+    ],
+    "vertical_roads": [
+        [True, True, False, False, True, True],
+        [True, False, False, True, True, True],
+        [True, True, True, False, False, True],
+        [True, True, True, False, True, True],
+        [True, True, True, True, True, True],
+        [True, True, True, True, False, True],
+        [True, True, True, True, True, True],
+    ],
+    "board_spaces": [
+        [None, None, Fair, Italian, None],
+        [None, Juice, None, None, None],
+        [Ballroom, None, None, None, None],
+        [Home, Theatre, None, Gas, None],
+        [None, Nightclub, Gas, None, Coffee],
+        [Airport, Flower, None, None, None],
+        [Sandwich, Gas, None, None, Taco]
+    ],
+    "direction": Direction.L
+}
+
+andy_1 = {
+    "horizontal_roads": [
+        [True, True, True, True, True],
+        [True, False, False, True, True],
+        [True, False, True, True, True],
+        [True, True, False, True, True],
+        [False, True, True, True, True],
+        [True, False, True, True, True],
+        [True, False, True, True, True],
+        [True, True, True, True, True],
+    ],
+    "vertical_roads": [
+        [True, True, True, True, True, True],
+        [True, True, True, True, False, True],
+        [True, True, True, True, True, True],
+        [True, True, True, True, False, True],
+        [True, True, True, True, False, True],
+        [True, True, True, False, True, True],
+        [True, True, True, True, True, True],
+    ],
+    "board_spaces": [
+        [None, None, Flower, Italian, None],
+        [None, Fair, None, Nightclub, None],
+        [Gas, Theatre, Sandwich, None, None],
+        [Coffee, None, Ballroom, None, Gas],
+        [None, Taco, None, None, Gas],
+        [None, None, Juice, None, None],
+        [None, Home, Airport, None, None]
+    ],
+    "direction": Direction.R
+}
+
+board = andy_1
 
 kdc = KarutaDateCalculator()
 kdc(board, board["direction"])
