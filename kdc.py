@@ -5,15 +5,24 @@ from route import Route
 
 class KarutaDateCalculator:
     def __init__(self):
+        self.best_route = None
+        self.mall_route = None
+        self.ring_route = None
+        self.mall_ring_route = None
         self.possible_routes = []
+        self.count = 0
 
     def calculate_all_possible_routes(self):
         def recurse(direction, current_road, route, step=0, visited=None):
+            # if self.count >= 1000000:
+                # return
+
             if visited is None:
                 visited = dict()
 
             if route.successful:
-                self.possible_routes.append(route)
+                self.add_successful_route(route)
+                self.count += 1
                 return
 
             # Add to possible_routes if Shopping Mall or Jewelry Store
@@ -21,6 +30,7 @@ class KarutaDateCalculator:
                 if route.contains(BoardSpaceType.M) or \
                         route.contains(BoardSpaceType.E):
                     self.possible_routes.append(route)
+                self.count += 1
                 return
 
             for action in current_road.available_actions(direction):
@@ -57,66 +67,99 @@ class KarutaDateCalculator:
         board_parser = BoardParser(json_board)
         self.initial_road = board_parser.horizontal_roads[-1][2]
         self.initial_direction = initial_direction
-        self.calculate_all_possible_routes()
+        try:
+            self.calculate_all_possible_routes()
+        except MemoryError:
+            print("Exceeded Memory")
+
+    def add_successful_route(self, route):
+        if self.best_route is None:
+            self.best_route = route
+            return
+
+        if self.mall_ring_route is None and route.contains(BoardSpaceType.E) \
+                and route.contains(BoardSpaceType.M):
+            self.mall_ring_route = route
+            return
+
+        if self.mall_ring_route is not None and \
+                route.contains(BoardSpaceType.E) \
+                and route.contains(BoardSpaceType.M):
+            self.mall_ring_route = max(self.mall_ring_route, route)
+            return
+
+        if self.ring_route is None and route.contains(BoardSpaceType.E):
+            self.ring_route = route
+            return
+
+        if self.ring_route is not None and \
+                route.contains(BoardSpaceType.E):
+            self.ring_route = max(self.ring_route, route)
+            return
+
+        if self.mall_route is None and route.contains(BoardSpaceType.M):
+            self.mall_route = route
+            return
+
+        if self.mall_route is not None and \
+                route.contains(BoardSpaceType.M):
+            self.mall_route = max(self.mall_route, route)
+            return
+
+        self.best_route = max(self.best_route, route)
 
     @property
     def best_successful_route(self):
-        successful_routes = [
-            route
-            for route in self.possible_routes
-            if route.successful
-        ]
-
-        if successful_routes:
-            return max(successful_routes)
-        else:
-            return None
+        return self.best_route or None
 
     @property
     def best_route_with_shopping_and_ring(self):
-        successful_routes = [
-            route
-            for route in self.possible_routes
-            if route.successful and
-            route.contains(BoardSpaceType.M) and
-            route.contains(BoardSpaceType.E)
-        ]
-
-        non_successful_routes = [
-            route
-            for route in self.possible_routes
-            if route.contains(BoardSpaceType.M) and
-            route.contains(BoardSpaceType.E)
-        ]
-
-        if successful_routes:
-            return max(successful_routes)
-        elif non_successful_routes:
-            return min(non_successful_routes, key=len)
+        if self.mall_ring_route is not None:
+            return self.mall_ring_route
         else:
-            return None
+            non_successful_routes = [
+                route
+                for route in self.possible_routes
+                if route.contains(BoardSpaceType.M) and
+                route.contains(BoardSpaceType.E)
+            ]
+
+            if len(non_successful_routes) == 0:
+                return None
+
+            return min(non_successful_routes, key=len)
+
+    @property
+    def best_route_with_jewelry_store(self):
+        if self.ring_route is not None:
+            return self.ring_route
+        else:
+            non_successful_routes = [
+                route
+                for route in self.possible_routes
+                if route.contains(BoardSpaceType.E)
+            ]
+
+            if len(non_successful_routes) == 0:
+                return None
+
+            return min(non_successful_routes, key=len)
 
     @property
     def best_route_with_shopping(self):
-        successful_routes = [
-            route
-            for route in self.possible_routes
-            if route.successful and
-            route.contains(BoardSpaceType.M)
-        ]
-
-        non_successful_routes = [
-            route
-            for route in self.possible_routes
-            if route.contains(BoardSpaceType.M)
-        ]
-
-        if successful_routes:
-            return max(successful_routes)
-        elif non_successful_routes:
-            return min(non_successful_routes, key=len)
+        if self.mall_route is not None:
+            return self.mall_route
         else:
-            return None
+            non_successful_routes = [
+                route
+                for route in self.possible_routes
+                if route.contains(BoardSpaceType.M)
+            ]
+
+            if len(non_successful_routes) == 0:
+                return None
+
+            return min(non_successful_routes, key=len)
 
     @property
     def best_route_with_shopping_and_home(self):
@@ -128,28 +171,6 @@ class KarutaDateCalculator:
         ]
 
         if non_successful_routes:
-            return min(non_successful_routes, key=len)
-        else:
-            return None
-
-    @property
-    def best_route_with_jewelry_store(self):
-        successful_routes = [
-            route
-            for route in self.possible_routes
-            if route.successful and
-            route.contains(BoardSpaceType.E)
-        ]
-
-        non_successful_routes = [
-            route
-            for route in self.possible_routes
-            if route.contains(BoardSpaceType.E)
-        ]
-
-        if successful_routes:
-            return max(successful_routes)
-        elif non_successful_routes:
             return min(non_successful_routes, key=len)
         else:
             return None
