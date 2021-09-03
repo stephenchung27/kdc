@@ -38,6 +38,10 @@ class KarutaDateCalculator:
                 new_visited = visited.copy()
 
                 if action.action_type in BoardSpaceType:
+                    if action.action_type == BoardSpaceType.L and \
+                        route.contains(BoardSpaceType.L):
+                        continue
+
                     if action.action not in new_visited:
                         new_visited[action.action] = step
                     elif step - new_visited[action.action] > 10:

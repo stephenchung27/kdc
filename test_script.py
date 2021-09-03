@@ -593,10 +593,141 @@ andy_1 = {
         [None, None, Juice, None, None],
         [None, Home, Airport, None, None]
     ],
-    "direction": Direction.R
+    "direction": Direction.R,
+    "gained": (48, 48)
 }
 
-board = andy_1
+joe_5 = {
+    "horizontal_roads": [
+        [True, True, True, True, True],
+        [False, False, False, False, True],
+        [False, True, True, True, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [True, True, True, False, True],
+        [True, True, True, False, True],
+        [True, True, True, True, True],
+    ],
+    "vertical_roads": [
+        [True, True, True, True, True, True],
+        [True, True, True, True, True, True],
+        [True, True, True, True, True, True],
+        [True, False, False, False, False, True],
+        [True, False, True, True, True, True],
+        [True, True, True, True, True, True],
+        [True, True, True, True, True, True],
+    ],
+    "board_spaces": [
+        [None, None, Taco, None, None],
+        [None, None, None, Gas, Juice],
+        [None, Ballroom, None, None, None],
+        [Home, None, None, None, None],
+        [None, Airport, None, Sandwich, None],
+        [Flower, Gas, Theatre, Fair, Italian],
+        [Nightclub, None, Coffee, Gas, None]
+    ],
+    "direction": Direction.L
+}
+
+andy_2 = {
+    "horizontal_roads": [
+        [True, True, True, True, True],
+        [True, True, True, False, True],
+        [False, True, False, True, True],
+        [False, False, False, True, True],
+        [True, False, False, False, True],
+        [True, True, False, True, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+    ],
+    "vertical_roads": [
+        [True, True, True, True, True, True],
+        [True, True, True, True, True, True],
+        [True, True, True, True, False, True],
+        [True, True, True, True, True, True],
+        [True, True, True, True, True, True],
+        [True, False, True, True, True, True],
+        [True, True, True, True, True, True],
+    ],
+    "board_spaces": [
+        [Home, Gas, Gas, None, Flower],
+        [Gas, Coffee, None, None, None],
+        [Italian, None, None, None, None],
+        [None, None, None, None, Ballroom],
+        [Sandwich, Fair, None, Taco, None],
+        [Nightclub, Juice, None, None, Theatre],
+        [None, Airport, None, None, None]
+    ],
+    "direction": Direction.L,
+    "gained": (40, 40)
+}
+
+stephen_8 = {
+    "horizontal_roads": [
+        [True, True, True, True, True],
+        [True, True, False, True, True],
+        [False, False, True, True, True],
+        [False, False, True, True, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+    ],
+    "vertical_roads": [
+        [True, False, True, True, True, True],
+        [True, True, True, True, True, True],
+        [True, True, True, True, False, True],
+        [True, True, True, True, False, True],
+        [True, False, True, False, True, True],
+        [True, True, True, True, False, True],
+        [True, True, True, True, True, True],
+    ],
+    "board_spaces": [
+        [None, Nightclub, None, None, None],
+        [Juice, None, Gas, Theatre, None],
+        [Taco, None, None, Airport, Gas],
+        [Italian, None, None, None, Ballroom],
+        [Home, None, Fair, None, None],
+        [Flower, None, None, None, Gas],
+        [Sandwich, None, None, None, Coffee]
+    ],
+    "direction": Direction.L,
+    "ap": 42
+}
+
+joe_6 = {
+    "horizontal_roads": [
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [True, True, False, False, True],
+        [True, True, True, True, True],
+    ],
+    "vertical_roads": [
+        [True, True, False, True, True, True],
+        [True, True, False, True, True, True],
+        [True, False, False, False, True, True],
+        [True, True, False, True, False, True],
+        [True, True, True, True, False, True],
+        [True, False, True, True, True, True],
+        [True, True, True, True, True, True],
+    ],
+    "board_spaces": [
+        [Sandwich, Gas, Fair, Italian, Ballroom],
+        [Gas, Theatre, Airport, None, None],
+        [None, None, None, None, None],
+        [None, Taco, None, Flower, None],
+        [None, None, Home, Juice, None],
+        [Nightclub, Gas, None, None, Coffee],
+        [None, None, None, None, None]
+    ],
+    "direction": Direction.L
+}
+
+board = joe_6
 
 kdc = KarutaDateCalculator()
 kdc(board, board["direction"])
