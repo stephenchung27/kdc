@@ -1,0 +1,19 @@
+.board-space-row {
+  display: flex;
+}
+
+.vertical-road {
+  position: relative;
+  width: 21px;
+  height: 100px;
+  background: no-repeat center/contain url("../images/vertical-road.png");
+  cursor: pointer;
+}
+
+.blocked-vertical-road {
+  position: absolute;
+  height: 98px;
+  top: 1px;
+  left: -36px;
+  z-index: 1;
+}

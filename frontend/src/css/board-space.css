@@ -1,0 +1,78 @@
+.board-space {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  background: center/contain url("../images/block-background.png");
+}
+
+.board-space-icon {
+  height: 35px;
+  width: 35px;
+  -webkit-filter: drop-shadow(0px 5px 5px #222);
+  filter: drop-shadow(0px 5px 5px #222);
+  z-index: 2;
+  background-image: url("../images/empty-block.svg");
+}
+
+.empty-block {
+  background-image: url("../images/empty-block.svg");
+}
+
+.ballroom {
+  background-image: url("../images/ballroom.svg")
+}
+
+.coffee-house {
+  background-image: url("../images/coffee-house.svg")
+}
+
+.fair {
+  background-image: url("../images/fair.svg")
+}
+
+.flower-garden {
+  background-image: url("../images/flower-garden.svg")
+}
+
+.gas-station {
+  background-image: url("../images/gas-station.svg")
+}
+
+.italian-restaurant {
+  background-image: url("../images/italian-restaurant.svg")
+}
+
+.juice-bar {
+  background-image: url("../images/juice-bar.svg")
+}
+
+.nightclub {
+  background-image: url("../images/night-club.svg")
+}
+
+.sandwich-shop {
+  background-image: url("../images/sandwich-shop.svg")
+}
+
+.taco-stand {
+  background-image: url("../images/taco-stand.svg")
+}
+
+.theatre {
+  background-image: url("../images/theatre.svg")
+}
+
+.airport {
+  background-image: url("../images/airport.svg")
+}
+
+.jewelry-store {
+  background-image: url("../images/jewelry-store.svg")
+}
+
+.home {
+  background-image: url("../images/home.svg")
+}

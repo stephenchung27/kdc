@@ -3,12 +3,12 @@ from constants import Direction
 
 
 Gas = "Gas Station"
-Italian = "Italian"           # P for sPaghetti
-Taco = "Taco"
+Italian = "Italian Restaurant"           # P for sPaghetti
+Taco = "Taco Stand"
 Sandwich = "Sandwich Shop"
 Fair = "Fair"
-Juice = "Juice"
-Coffee = "Coffee"
+Juice = "Juice Bar"
+Coffee = "Coffee Shop"
 Nightclub = "Nightclub"
 Flower = "Flower Garden"     # L for fLower garden
 Ballroom = "Ballroom"
@@ -1178,7 +1178,103 @@ josh_1 = {
     "direction": Direction.R
 }
 
-board = josh_1
+joe_9 = {
+    "horizontal_roads": [
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [True, False, True, True, True],
+        [True, False, False, True, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [False, False, True, True, True],
+        [True, True, True, True, True],
+    ],
+    "vertical_roads": [
+        [True, True, True, False, False, True],
+        [True, True, True, True, False, True],
+        [True, True, True, True, False, True],
+        [True, True, True, True, False, True],
+        [True, True, False, True, False, True],
+        [True, True, True, False, False, True],
+        [True, True, True, True, True, True],
+    ],
+    "board_spaces": [
+        [Airport, None, None, None, None],
+        [None, None, None, Coffee, None],
+        [Sandwich, None, None, Gas, None],
+        [Home, Taco, None, Nightclub, Flower],
+        [Gas, None, None, Ballroom, Gas],
+        [Fair, None, None, None, Italian],
+        [None, Theatre, Juice, None, None]
+    ],
+    "direction": Direction.L
+}
+
+stephen_16 = {
+    "horizontal_roads": [
+        [True, True, True, True, True],
+        [False, True, True, True, True],
+        [True, True, False, False, True],
+        [True, True, True, True, True],
+        [True, True, False, True, True],
+        [True, False, True, False, True],
+        [False, True, False, False, True],
+        [True, True, True, True, True],
+    ],
+    "vertical_roads": [
+        [True, True, True, False, False, True],
+        [True, True, True, True, True, True],
+        [True, True, True, True, True, True],
+        [True, False, True, True, True, True],
+        [True, True, True, True, True, True],
+        [True, True, True, True, True, True],
+        [True, True, True, True, True, True],
+    ],
+    "board_spaces": [
+        [None, None, Sandwich, None, Home],
+        [Ballroom, None, None, Gas, None],
+        [None, None, Coffee, None, None],
+        [None, None, None, Theatre, None],
+        [None, None, None, None, Fair],
+        [None, Taco, Italian, Airport, Gas],
+        [Nightclub, None, Juice, Flower, Gas]
+    ],
+    "direction": Direction.L
+}
+
+eric_4 = {
+    "horizontal_roads": [
+        [True, True, True, True, True],
+        [False, True, True, True, True],
+        [True, False, True, True, True],
+        [False, False, True, True, True],
+        [True, True, True, True, True],
+        [False, True, True, True, True],
+        [True, False, False, True, True],
+        [True, True, True, True, True],
+    ],
+    "vertical_roads": [
+        [True, True, True, False, False, True],
+        [True, True, True, True, False, True],
+        [True, True, True, True, False, True],
+        [True, True, True, False, True, True],
+        [True, True, False, False, True, True],
+        [True, True, True, True, True, True],
+        [True, True, True, True, True, True],
+    ],
+    "board_spaces": [
+        [Theatre, None, Coffee, None, None],
+        [None, None, None, None, None],
+        [Flower, Juice, None, None, Home],
+        [None, Airport, None, None, None],
+        [None, None, Sandwich, None, Gas],
+        [Italian, Gas, None, Fair, None],
+        [Taco, None, Ballroom, Gas, Nightclub]
+    ],
+    "direction": Direction.R
+}
+
+board = eric_4
 
 kdc = KarutaDateCalculator()
 kdc(board, board["direction"])

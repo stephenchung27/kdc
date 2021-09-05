@@ -1,0 +1,13 @@
+.board {
+  transform: scale(100%);
+}
+
+.car {
+  position: absolute;
+  bottom: 2px;
+  left: 285px;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}

@@ -1,0 +1,25 @@
+.horizontal-road-row {
+  display: flex;
+}
+
+.horizontal-road {
+  position: relative;
+  width: 100px;
+  height: 21px;
+  background: no-repeat center/contain url("../images/horizontal-road.png");
+  cursor: pointer;
+}
+
+.blocked-horizontal-road {
+  position: absolute;
+  height: 90px;
+  top: -35px;
+  left: -4px;
+  z-index: 1;
+}
+
+.intersection {
+  height: 21px;
+  width: 21px;
+  background: center/contain url("../images/intersection.png");
+}

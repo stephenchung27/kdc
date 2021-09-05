@@ -39,11 +39,11 @@ def blank_json_board():
 @fixture
 def board_spaces():
     return [
-        ["Fair", None, "Nightclub", "Juice", "Jewelry Store"],
+        ["Fair", None, "Nightclub", "Juice Bar", "Jewelry Store"],
         ["Sandwich Shop", None, "Gas Station", None, None],
-        ["Gas Station", "Italian", None, None, "Shopping Mall"],
+        ["Gas Station", "Italian Restaurant", None, None, "Shopping Mall"],
         [None, None, None, "Coffee", None],
-        ["Taco", "Home", None, "Gas Station", None],
+        ["Taco Stand", "Home", None, "Gas Station", None],
         [None, None, "Theatre", None, "Flower Garden"],
         ["Ballroom", "Airport", None, None, None]
     ]
