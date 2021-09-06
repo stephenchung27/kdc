@@ -28,7 +28,7 @@ function HorizontalRoadRow({
   }
 
   return (
-    <div key={row} className="horizontal-road-row">
+    <div key={`horizontal-row-${row}`} className="horizontal-road-row">
       {mapHorizontalRow()}
     </div>
   )

@@ -33,7 +33,7 @@ function BoardSpaceRow({
   }
 
   return (
-    <div key={row} className='board-space-row'>
+    <div key={`board-space-row-${row}`}  className='board-space-row'>
       {mapBoardSpaceRow()}
     </div>
   )

@@ -1,3 +1,49 @@
 .options {
   margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons button {
+  margin: 0 5px 10px;
+  font-family: 'Whitney Medium';
+  background-color: rgb(88, 101, 242);
+  border: none;
+  border-radius: 3px;
+  height: 32px;
+  padding: 2px 16px;
+  color: #FFF;
+  -webkit-transition: background-color .17s ease,color .17s ease;
+  transition: background-color .17s ease,color .17s ease;
+  cursor: pointer;
+}
+
+.direction {
+  color: #FEE75C;
+  text-transform: lowercase;
+}
+
+.car-direction-options span {
+  margin-left: 10px;
+}
+
+.missing-board-spaces {
+  color: #ED4245;
+  margin: 10px 5px 5px;
+}
+
+.missing-board-spaces-list ul {
+  display: flex;
+  justify-content: space-between;
+  flex: 1 1 1 1;
+  flex-wrap: wrap;
+  width: 600px;
+}
+
+.missing-board-spaces-list li {
+  width: 200px;
+}
+
+.no-missing-spaces {
+  color: #57F287;
 }

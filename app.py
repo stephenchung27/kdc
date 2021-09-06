@@ -1,6 +1,6 @@
 import os
 from flask import Flask, request, jsonify, send_from_directory
-from kdc import KarutaDateCalculator
+from kdc.kdc import KarutaDateCalculator
 
 app = Flask(__name__, static_folder="build")
 
