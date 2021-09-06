@@ -2,10 +2,10 @@ from enum import Enum
 
 
 class Direction(Enum):
-    U = "UP"
-    D = "DOWN"
-    L = "LEFT"
-    R = "RIGHT"
+    U = "Up"
+    D = "Down"
+    L = "Left"
+    R = "Right"
 
 
 class BoardSpaceType(Enum):
@@ -15,7 +15,7 @@ class BoardSpaceType(Enum):
     S = "Sandwich Shop"
     F = "Fair"
     J = "Juice Bar"
-    C = "Coffee Shop"
+    C = "Coffee House"
     N = "Nightclub"
     L = "Flower Garden"         # L for fLower garden
     B = "Ballroom"

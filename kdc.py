@@ -70,7 +70,7 @@ class KarutaDateCalculator:
     def __call__(self, json_board, initial_direction):
         board_parser = BoardParser(json_board)
         self.initial_road = board_parser.horizontal_roads[-1][2]
-        self.initial_direction = initial_direction
+        self.initial_direction = Direction(initial_direction)
         try:
             self.calculate_all_possible_routes()
         except MemoryError:
@@ -113,94 +113,163 @@ class KarutaDateCalculator:
         self.best_route = max(self.best_route, route)
 
     @property
-    def best_successful_route(self):
-        return self.best_route or None
-
-    @property
-    def best_route_with_shopping_and_ring(self):
-        if self.mall_ring_route is not None:
-            return self.mall_ring_route
-        else:
-            non_successful_routes = [
-                route
-                for route in self.possible_routes
-                if route.contains(BoardSpaceType.M) and
-                route.contains(BoardSpaceType.E)
+    def optimal_route(self):
+        if self.mall_ring_route:
+            return [
+                {
+                    "route": self.mall_ring_route.to_array(),
+                    "state": self.mall_ring_route.value_state.__dict__(),
+                    "description": "Successful Route with Shopping Mall and Jewelry Store"
+                }
             ]
 
-            if len(non_successful_routes) == 0:
-                return None
+        routes = []
 
-            return min(non_successful_routes, key=len)
+        if self.ring_route:
+            routes.append({
+                "route": self.ring_route.to_array(),
+                "state": self.ring_route.value_state.__dict__(),
+                "description": "Successful Route with Jewelry Store"
+            })
 
-    @property
-    def best_route_with_jewelry_store(self):
-        if self.ring_route is not None:
-            return self.ring_route
-        else:
-            non_successful_routes = [
-                route
-                for route in self.possible_routes
-                if route.contains(BoardSpaceType.E)
-            ]
+        if self.mall_route:
+            routes.append({
+                "route": self.mall_route.to_array(),
+                "state": self.mall_route.value_state.__dict__(),
+                "description": "Successful Route with Shopping Mall"
+            })
 
-            if len(non_successful_routes) == 0:
-                return None
+        possible_routes = [
+            route
+            for route in self.possible_routes
+            if route.contains(BoardSpaceType.M) and
+            route.contains(BoardSpaceType.E) and
+            route.contains(BoardSpaceType.H)
+        ]
 
-            return min(non_successful_routes, key=len)
+        if possible_routes:
+            best_route = max(possible_routes)
+            routes.append({
+                "route": best_route.to_array(),
+                "state": best_route.value_state.__dict__(),
+                "description": "Route with Shopping Mall and Jewelry Store then Home"
+            })
 
-    @property
-    def best_route_with_shopping(self):
-        if self.mall_route is not None:
-            return self.mall_route
-        else:
-            non_successful_routes = [
-                route
-                for route in self.possible_routes
-                if route.contains(BoardSpaceType.M)
-            ]
+        possible_routes = [
+            route
+            for route in self.possible_routes
+            if route.contains(BoardSpaceType.M) and
+            route.contains(BoardSpaceType.E) and
+            route.contains(BoardSpaceType.A)
+        ]
 
-            if len(non_successful_routes) == 0:
-                return None
+        if possible_routes:
+            best_route = max(possible_routes)
+            routes.append({
+                "route": best_route.to_array(),
+                "state": best_route.value_state.__dict__(),
+                "description": "Route with Shopping Mall and Jewelry Store then Airport"
+            })
 
-            return min(non_successful_routes, key=len)
+        if len(routes) > 0:
+            return routes
 
-    @property
-    def best_route_with_shopping_and_home(self):
-        non_successful_routes = [
+        if self.best_route:
+            routes.append({
+                "route": self.best_route.to_array(),
+                "state": self.best_route.value_state.__dict__(),
+                "description": "Successful Route"
+            })
+
+        possible_routes = [
             route
             for route in self.possible_routes
             if route.contains(BoardSpaceType.M) and
             route.contains(BoardSpaceType.H)
         ]
 
-        if non_successful_routes:
-            return min(non_successful_routes, key=len)
-        else:
-            return None
+        if possible_routes:
+            best_route = max(possible_routes)
+            routes.append({
+                "route": best_route.to_array(),
+                "state": best_route.value_state.__dict__(),
+                "description": "Route with Shopping Mall then Home"
+            })
 
-    @property
-    def best_route_with_home(self):
-        home_routes = [
+        possible_routes = [
             route
             for route in self.possible_routes
-            if route.took_home
+            if route.contains(BoardSpaceType.E) and
+            route.contains(BoardSpaceType.H)
         ]
 
-        if home_routes:
-            return max(home_routes, key=len)
-        else:
-            return None
+        if possible_routes:
+            best_route = max(possible_routes)
+            routes.append({
+                "route": best_route.to_array(),
+                "state": best_route.value_state.__dict__(),
+                "description": "Route with Jewelry Store then Home"
+            })
 
-    @property
-    def best_route_with_airport(self):
-        airport_routes = [
+        possible_routes = [
             route
             for route in self.possible_routes
-            if route.took_airport
+            if route.contains(BoardSpaceType.M) and
+            route.contains(BoardSpaceType.A)
         ]
 
-        if airport_routes:
-            return max(airport_routes or [])
-        else:
-            return None
+        if possible_routes:
+            best_route = max(possible_routes)
+            routes.append({
+                "route": best_route.to_array(),
+                "state": best_route.value_state.__dict__(),
+                "description": "Route with Shopping Mall then Airport"
+            })
+
+        possible_routes = [
+            route
+            for route in self.possible_routes
+            if route.contains(BoardSpaceType.E) and
+            route.contains(BoardSpaceType.A)
+        ]
+
+        if possible_routes:
+            best_route = max(possible_routes)
+            routes.append({
+                "route": best_route.to_array(),
+                "state": best_route.value_state.__dict__(),
+                "description": "Route with Jewelry Store then Airport"
+            })
+
+        if len(routes) > 0:
+            return routes
+
+        possible_routes = [
+            route
+            for route in self.possible_routes
+            if route.contains(BoardSpaceType.H)
+        ]
+
+        if possible_routes:
+            best_route = max(possible_routes)
+            routes.append({
+                "route": best_route.to_array(),
+                "state": best_route.value_state.__dict__(),
+                "description": "Route to Home"
+            })
+
+        possible_routes = [
+            route
+            for route in self.possible_routes
+            if route.contains(BoardSpaceType.A)
+        ]
+
+        if possible_routes:
+            best_route = max(possible_routes)
+            routes.append({
+                "route": best_route.to_array(),
+                "state": best_route.value_state.__dict__(),
+                "description": "Route to Airport"
+            })
+
+        return routes

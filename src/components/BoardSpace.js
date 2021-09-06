@@ -27,7 +27,6 @@ function BoardSpace ({ boardSpaceType, setBoardSpace }) {
   const [boardSpaceClassName, setBoardSpaceClassName] = useState('');
 
   useEffect(() => {
-    console.log(boardSpaceType);
     if (boardSpaceType === null) {
       setBoardSpaceClassName('');
     } else {

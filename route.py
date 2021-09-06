@@ -19,6 +19,9 @@ class Route:
     def __str__(self):
         return ", ".join([str(action) for action in self.route])
 
+    def to_array(self):
+        return [str(action) for action in self.route]
+
     def __len__(self):
         return len(self.route)
 

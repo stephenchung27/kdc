@@ -8,7 +8,7 @@ Taco = "Taco Stand"
 Sandwich = "Sandwich Shop"
 Fair = "Fair"
 Juice = "Juice Bar"
-Coffee = "Coffee Shop"
+Coffee = "Coffee House"
 Nightclub = "Nightclub"
 Flower = "Flower Garden"     # L for fLower garden
 Ballroom = "Ballroom"
@@ -1279,32 +1279,4 @@ board = eric_4
 kdc = KarutaDateCalculator()
 kdc(board, board["direction"])
 
-print(f"""
-Best Successful Route
-{kdc.best_successful_route}
-{kdc.best_successful_route.value_state if kdc.best_successful_route else ""}
-
-Shopping
-{kdc.best_route_with_shopping}
-{kdc.best_route_with_shopping.value_state if kdc.best_route_with_shopping else ""}
-
-Shopping + Ring
-{kdc.best_route_with_shopping_and_ring}
-{kdc.best_route_with_shopping_and_ring.value_state if kdc.best_route_with_shopping_and_ring else ""}
-
-Shopping + Home
-{kdc.best_route_with_shopping_and_home}
-{kdc.best_route_with_shopping_and_home.value_state if kdc.best_route_with_shopping_and_home else ""}
-
-Jewelry Store
-{kdc.best_route_with_jewelry_store}
-{kdc.best_route_with_jewelry_store.value_state if kdc.best_route_with_jewelry_store else ""}
-
-Home
-{kdc.best_route_with_home}
-{kdc.best_route_with_home.value_state if kdc.best_route_with_home else ""}
-
-Airport
-{kdc.best_route_with_airport}
-{kdc.best_route_with_airport.value_state if kdc.best_route_with_airport else ""}
-""")
+print(kdc.optimal_route)

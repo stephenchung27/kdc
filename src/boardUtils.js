@@ -1,5 +1,5 @@
 export const nullBoardState = {
-  horizontalRoads: [
+  horizontal_roads: [
     [true, true, true, true, true],
     [true, true, true, true, true],
     [true, true, true, true, true],
@@ -9,7 +9,7 @@ export const nullBoardState = {
     [true, true, true, true, true],
     [true, true, true, true, true],
   ],
-  verticalRoads: [
+  vertical_roads: [
     [true, true, true, true, true, true],
     [true, true, true, true, true, true],
     [true, true, true, true, true, true],
@@ -18,7 +18,7 @@ export const nullBoardState = {
     [true, true, true, true, true, true],
     [true, true, true, true, true, true],
   ],
-  boardSpaces: [
+  board_spaces: [
     [null, null, null, null, null],
     [null, null, null, null, null],
     [null, null, null, null, null],
@@ -27,7 +27,7 @@ export const nullBoardState = {
     [null, null, null, null, null],
     [null, null, null, null, null],
   ],
-  startingDirection: null,
+  direction: "Right",
 }
 
 Object.freeze(nullBoardState);
@@ -43,13 +43,13 @@ export function toggleHorizontalRoad(board, setBoard, row, column) {
   }
 
   const newBoard = copyBoard(board);
-  newBoard.horizontalRoads[row][column] = !board.horizontalRoads[row][column];
+  newBoard.horizontal_roads[row][column] = !board.horizontal_roads[row][column];
 
   // Unblock intersecting vertical roads
-  newBoard.verticalRoads[row-1][column] = true;
-  newBoard.verticalRoads[row-1][column+1] = true;
-  newBoard.verticalRoads[row][column] = true;
-  newBoard.verticalRoads[row][column+1] = true;
+  newBoard.vertical_roads[row-1][column] = true;
+  newBoard.vertical_roads[row-1][column+1] = true;
+  newBoard.vertical_roads[row][column] = true;
+  newBoard.vertical_roads[row][column+1] = true;
 
   setBoard(newBoard);
 }
@@ -61,26 +61,25 @@ export function toggleVerticalRoad(board, setBoard, row, column) {
   }
 
   const newBoard = copyBoard(board);
-  newBoard.verticalRoads[row][column] = !board.verticalRoads[row][column];
+  newBoard.vertical_roads[row][column] = !board.vertical_roads[row][column];
 
   // Unblock intersecting vertical roads
-  newBoard.horizontalRoads[row][column] = true;
-  newBoard.horizontalRoads[row][column-1] = true;
-  newBoard.horizontalRoads[row+1][column] = true;
-  newBoard.horizontalRoads[row+1][column-1] = true;
+  newBoard.horizontal_roads[row][column] = true;
+  newBoard.horizontal_roads[row][column-1] = true;
+  newBoard.horizontal_roads[row+1][column] = true;
+  newBoard.horizontal_roads[row+1][column-1] = true;
 
   setBoard(newBoard);
 }
 
 export function setBoardSpace(board, setBoard, row, column, boardSpaceType) {
   const newBoard = copyBoard(board);
-  console.log(boardSpaceType)
-  newBoard.boardSpaces[row][column] = boardSpaceType;
+  newBoard.board_spaces[row][column] = boardSpaceType;
   setBoard(newBoard);
 }
 
 export function flipCar(board, setBoard) {
   const newBoard = copyBoard(board);
-  newBoard.startingDirection = board.startingDirection === "Right" ? "Left" : "Right";
+  newBoard.direction = board.direction === "Right" ? "Left" : "Right";
   setBoard(newBoard);
 }

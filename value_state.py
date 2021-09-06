@@ -36,3 +36,12 @@ class ValueState:
         return "Fuel: {}, Food: {}, Drink: {}, Entertainment: {}, Time: {}".format(
             self.fuel, self.food, self.drink, self.entertainment, self.time
         )
+
+    def __dict__(self):
+        return {
+            "fuel": self.fuel,
+            "food": self.food,
+            "drink": self.drink,
+            "entertainment": self.entertainment,
+            "time": self.time,
+        }
