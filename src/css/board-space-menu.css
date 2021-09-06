@@ -8,8 +8,7 @@
   background-color: white;
   z-index: 3;
   display: flex;
-  min-width: 250px;
-  flex: 1 1 1 1;
+  min-width: 300px;
   flex-wrap: wrap;
   padding: 5px;
 }

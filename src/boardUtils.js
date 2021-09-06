@@ -78,8 +78,8 @@ export function setBoardSpace(board, setBoard, row, column, boardSpaceType) {
   setBoard(newBoard);
 }
 
-export function flipCar(board, setBoard) {
+export function setDirection(board, setBoard, direction) {
   const newBoard = copyBoard(board);
-  newBoard.direction = board.direction === "Right" ? "Left" : "Right";
+  newBoard.direction = direction;
   setBoard(newBoard);
 }

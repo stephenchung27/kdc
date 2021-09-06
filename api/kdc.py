@@ -1,6 +1,6 @@
-from board_parser import BoardParser
-from constants import Direction, BoardSpaceType
-from route import Route
+from .board_parser import BoardParser
+from .constants import Direction, BoardSpaceType
+from .route import Route
 
 
 class KarutaDateCalculator:
@@ -71,10 +71,7 @@ class KarutaDateCalculator:
         board_parser = BoardParser(json_board)
         self.initial_road = board_parser.horizontal_roads[-1][2]
         self.initial_direction = Direction(initial_direction)
-        try:
-            self.calculate_all_possible_routes()
-        except MemoryError:
-            print("Exceeded Memory")
+        self.calculate_all_possible_routes()
 
     def add_successful_route(self, route):
         if self.best_route is None:

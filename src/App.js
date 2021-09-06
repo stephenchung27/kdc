@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { flipCar, nullBoardState, setBoardSpace, toggleHorizontalRoad, toggleVerticalRoad } from './boardUtils';
+import { setDirection, nullBoardState, setBoardSpace, toggleHorizontalRoad, toggleVerticalRoad } from './boardUtils';
 import BoardSpaceRow from './components/BoardSpaceRow';
 import HorizontalRoadRow from './components/HorizontalRoadRow';
 import Options from './components/Options';
@@ -8,6 +8,10 @@ import car from './images/car.png';
 
 function App() {
   const [board, setBoard] = useState(nullBoardState);
+
+  function clearBoard() {
+    setBoard(nullBoardState);
+  }
 
   function mapBoardRows() {
     const mappedRows = [];
@@ -48,7 +52,9 @@ function App() {
           className={`car${board.direction === "Left" ? " flipped" : ""}`}
           alt="Car" src={car} />
       </div>
-      <Options board={board} flipCar={() => flipCar(board, setBoard)} />
+      <Options board={board} 
+        setDirection={(direction) => setDirection(board, setBoard, direction)}
+        clearBoard={clearBoard} />
     </div>
   );
 }

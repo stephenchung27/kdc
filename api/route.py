@@ -1,5 +1,5 @@
-from value_state import ValueState
-from constants import BoardSpaceType
+from .value_state import ValueState
+from .constants import BoardSpaceType
 
 
 class Route:

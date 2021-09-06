@@ -1,5 +1,5 @@
 from collections import defaultdict
-from action import Action
+from .action import Action
 
 
 class Road():

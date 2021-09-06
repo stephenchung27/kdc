@@ -69,6 +69,9 @@ function BoardSpaceMenu({
         className="menu-button airport"
         onClick={() => setBoardSpaceAndClose("Airport")} />
       <button
+        className="menu-button shopping-mall"
+        onClick={() => setBoardSpaceAndClose("Shopping Mall")} />
+      <button
         className="menu-button jewelry-store"
         onClick={() => setBoardSpaceAndClose("Jewelry Store")} />
       <button

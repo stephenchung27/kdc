@@ -1,6 +1,6 @@
-from constants import Direction, BoardSpaceType
-from road import Road
-from board_space import BoardSpace
+from .constants import Direction, BoardSpaceType
+from .road import Road
+from .board_space import BoardSpace
 
 
 class BoardParser:

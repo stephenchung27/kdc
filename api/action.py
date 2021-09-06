@@ -1,5 +1,4 @@
-from constants import Direction, BoardSpaceType
-import pdb
+from .constants import Direction, BoardSpaceType
 
 
 class Action:
