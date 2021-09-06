@@ -37,6 +37,9 @@ function Options({
         </button>
         <button onClick={clearBoard}>CLEAR</button>
       </div>
+      <div className="credits">
+        Created by stephen#1111
+      </div>
     </div>
   );
 }

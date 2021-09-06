@@ -83,7 +83,7 @@
   height: 20px;
   width: 222px;
   margin-bottom: 5px;
-  margin-right: 0;
+  margin-right: 0px;
   padding: 5px;
   display: flex;
   justify-content: space-between;
@@ -116,4 +116,10 @@
 .missing-board-spaces .good {
   color: #57F287;
   border: 3px solid #57F287;
+}
+
+.credits {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
 }
