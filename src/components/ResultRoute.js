@@ -1,18 +1,32 @@
+import '../css/results.css';
+
 function ResultRoute({ result }) {
   return (
-    <div>
-      <div>{result.description}</div>
-      <ol>
-        {result.route.map((action) => (
-          <li>{action}</li>
-        ))}
-      </ol>
-      <div>
-        <div>Fuel: {result.state.fuel}</div>
-        <div>Food: {result.state.food}</div>
-        <div>Drink: {result.state.drink}</div>
-        <div>Entertainment: {result.state.entertainment}</div>
-        <div>Time: {result.state.time}</div>
+    <div className="result-route-wrapper">
+      <div className="result-route">
+        <span>{result.description}</span>
+        <ol>
+          {result.route.map((action) => (
+            <li>{action}</li>
+          ))}
+        </ol>
+        <div className="route-stats">
+          <div>
+            <span>Fuel:</span><span>{result.state.fuel}</span>
+          </div>
+          <div>
+            <span>Food:</span><span>{result.state.food}</span>
+          </div>
+          <div>
+            <span>Drink:</span><span>{result.state.drink}</span>
+          </div>
+          <div>
+            <span>Entertainment:</span><span>{result.state.entertainment}</span>
+          </div>
+          <div>
+            <span>Time:</span><span>{result.state.time}</span>
+          </div>
+        </div>
       </div>
     </div>
   );

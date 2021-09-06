@@ -1,0 +1,30 @@
+.result-route-wrapper {
+  background-color:#57F287;
+  border-radius: 5px;
+  overflow: hidden;
+  align-self: flex-start;
+  margin-right: 10px;
+  max-width: 200px;
+}
+
+.result-route {
+  background-color: rgb(47, 49, 54);
+  margin-left: 4px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.result-route > span {
+  font-weight: 600;
+  font-size: 16px;
+  color: #FFF;
+}
+
+.route-stats div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.route-stats div span:last-child {
+  color: #57F287;
+}

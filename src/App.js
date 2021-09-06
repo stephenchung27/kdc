@@ -1,17 +1,107 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { setDirection, nullBoardState, setBoardSpace, toggleHorizontalRoad, toggleVerticalRoad } from './boardUtils';
 import BoardSpaceRow from './components/BoardSpaceRow';
 import HorizontalRoadRow from './components/HorizontalRoadRow';
 import Options from './components/Options';
 import car from './images/car.png';
+import ResultRoute from './components/ResultRoute';
+
 
 function App() {
   const [board, setBoard] = useState(nullBoardState);
+  const [results, setResults] = useState([
+    {
+        "description": "Successful Route",
+        "route": [
+            "Coffee House",
+            "Right",
+            "Ballroom",
+            "Up",
+            "Up",
+            "Up",
+            "Left",
+            "Fair",
+            "Up",
+            "Taco Stand",
+            "Up",
+            "Up",
+            "Gas Station",
+            "Left",
+            "Juice Bar",
+            "Up",
+            "Right",
+            "Down",
+            "Flower Garden",
+            "Down",
+            "Down",
+            "Gas Station",
+            "Down",
+            "Taco Stand",
+            "Fair"
+        ],
+        "state": {
+            "drink": 41,
+            "entertainment": 92,
+            "food": 100,
+            "fuel": 90,
+            "time": 0
+        }
+    },
+    {
+      "description": "Route with Shopping Mall and Jewelry Store then Airport",
+      "route": [
+          "Coffee House",
+          "Right",
+          "Ballroom",
+          "Up",
+          "Up",
+          "Up",
+          "Left",
+          "Fair",
+          "Up",
+          "Taco Stand",
+          "Up",
+          "Up",
+          "Gas Station",
+          "Left",
+          "Juice Bar",
+          "Up",
+          "Right",
+          "Down",
+          "Flower Garden",
+          "Down",
+          "Down",
+          "Gas Station",
+          "Down",
+          "Taco Stand",
+          "Fair"
+      ],
+      "state": {
+          "drink": 41,
+          "entertainment": 92,
+          "food": 100,
+          "fuel": 90,
+          "time": 0
+      }
+  }
+]);
 
   function clearBoard() {
     setBoard(nullBoardState);
   }
+
+  useEffect(() => {
+    localStorage.setItem('board', JSON.stringify(board));
+  }, [board])
+
+  useEffect(() => {
+    const retrievedBoard = JSON.parse(localStorage.getItem('board'));
+    console.log(retrievedBoard);
+    if (retrievedBoard.board_spaces !== undefined) {
+      setBoard(retrievedBoard);
+    }
+  }, [])
 
   function mapBoardRows() {
     const mappedRows = [];
@@ -54,7 +144,11 @@ function App() {
       </div>
       <Options board={board} 
         setDirection={(direction) => setDirection(board, setBoard, direction)}
-        clearBoard={clearBoard} />
+        clearBoard={clearBoard}
+        setResults={setResults} />
+      <div className="result-list">
+        {results.map(result => <ResultRoute result={result} />)}
+      </div>
     </div>
   );
 }

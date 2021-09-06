@@ -58,6 +58,7 @@
 
 .direction-option:first-child img {
   transform: rotateY(180deg);
+  z-index: -1;
 }
 
 .direction-option:hover {
@@ -82,6 +83,7 @@
   height: 20px;
   width: 222px;
   margin-bottom: 5px;
+  margin-right: 0;
   padding: 5px;
   display: flex;
   justify-content: space-between;
