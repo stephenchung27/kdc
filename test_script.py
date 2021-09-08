@@ -45,9 +45,75 @@ blank_board = {
         [None, None, None, None, None],
         [None, None, None, None, None],
         [None, None, None, None, None],
-        [None, None, None, None, None]
+        [None, None, None, None, None],
     ],
-    "direction": None
+    "direction": Direction.L
+}
+
+stephen_18 = {
+    "horizontal_roads": [
+        [True, True, True, True, True],
+        [False, True, True, True, True],
+        [True, True, True, True, True],
+        [True, True, True, False, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [False, True, True, True, True],
+        [True, True, True, True, True],
+    ],
+    "vertical_roads": [
+        [True, True, True, True, True, True],
+        [True, True, False, True, False, True],
+        [True, False, False, True, True, True],
+        [True, True, False, True, True, True],
+        [True, False, True, True, False, True],
+        [True, True, True, False, False, True],
+        [True, True, True, True, True, True],
+    ],
+    "board_spaces": [
+        [None, Theatre, Gas, None, None],
+        [Ballroom, None, None, Sandwich, None],
+        [None, Flower, None, Nightclub, Home],
+        [Juice, None, Fair, Gas, None],
+        [None, None, None, Italian, None],
+        [None, None, Gas, None, Airport],
+        [None, None, Coffee, None, Taco],
+    ],
+    "direction": Direction.L
+}
+
+board = stephen_18
+
+stephen_17 = {
+    "horizontal_roads": [
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [True, False, True, True, True],
+        [False, False, True, True, True],
+        [False, True, True, True, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+        [True, True, True, True, True],
+    ],
+    "vertical_roads": [
+        [True, False, False, True, True, True],
+        [True, True, True, True, False, True],
+        [True, True, True, False, False, True],
+        [True, True, True, True, True, True],
+        [True, True, True, False, True, True],
+        [True, True, False, False, True, True],
+        [True, True, True, True, True, True],
+    ],
+    "board_spaces": [
+        [None, Taco, Gas, None, Fair],
+        [Home, Sandwich, Gas, None, None],
+        [Theatre, Nightclub, None, None, None],
+        [Airport, None, Italian, Gas, None],
+        [None, Ballroom, None, None, Juice],
+        [None, None, Flower, None, None],
+        [None, None, Coffee, None, None]
+    ],
+    "direction": Direction.L
 }
 
 joe_1 = {
@@ -1273,8 +1339,6 @@ eric_4 = {
     ],
     "direction": Direction.R
 }
-
-board = eric_4
 
 kdc = KarutaDateCalculator()
 kdc(board, board["direction"])

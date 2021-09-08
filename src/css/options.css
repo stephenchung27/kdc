@@ -120,6 +120,6 @@
 
 .credits {
   margin-top: 10px;
-  text-align: center;
   font-size: 14px;
+  align-self: center;
 }
