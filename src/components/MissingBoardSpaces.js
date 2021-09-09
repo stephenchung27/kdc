@@ -54,6 +54,7 @@ const boardSpaceImages = {
 function MissingBoardSpaces({
   boardSpaces,
   setValidBoard,
+  directionNotSet,
 }) {
 
   useEffect(() => {
@@ -70,8 +71,11 @@ function MissingBoardSpaces({
         }
       }
     }
+    if (directionNotSet) {
+      validBoard = false;
+    }
     setValidBoard(validBoard);
-  }, [boardSpaces])
+  }, [boardSpaces]);
 
   function getBoardSpaceCounts() {
     const currentBoardSpaceCount = Object.assign({}, nullBoardSpaceCount);

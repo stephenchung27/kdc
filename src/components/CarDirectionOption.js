@@ -1,7 +1,8 @@
 import carIcon from '../images/car.png';
 
 function CarDirectionOption({
-  setDirection, direction
+  setDirection,
+  direction
 }) {
   return (
     <div className="car-direction-options">

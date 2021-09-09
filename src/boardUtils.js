@@ -27,7 +27,7 @@ export const nullBoardState = {
     [null, null, null, null, null],
     [null, null, null, null, null],
   ],
-  direction: "Right",
+  direction: null,
 }
 
 Object.freeze(nullBoardState);
