@@ -70,6 +70,7 @@ function App() {
       <Options board={board} 
         setDirection={(direction) => setDirection(board, setBoard, direction)}
         clearBoard={clearBoard}
+        setBoard={setBoard}
         setResults={setResults} />
       <div className="result-list">
         {results.map(result => <ResultRoute result={result} />)}

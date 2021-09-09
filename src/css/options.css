@@ -168,7 +168,7 @@
   }
 }
 
-.copy-options form {
+.copy-options {
   display: flex;
   width: 200px;
 }
@@ -176,7 +176,7 @@
 .copy-options input {
   border: none;
   outline: none;
-  max-width: 100px;
+  max-width: 140px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -190,7 +190,7 @@
 .copy-options button {
   border: none;
   outline: none;
-  width: 100px;
+  min-width: 60px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -214,9 +214,11 @@
   font-size: 12px;
   margin-bottom: 5px;
   text-align: center;
+  opacity: 1;
+  transition: all .17s linear;
 }
 
 .copy-message.hidden {
   opacity: 0;
-  transition: all .17s ease 2s;
+  transition: all .17s ease 1s;
 }

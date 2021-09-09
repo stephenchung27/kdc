@@ -8,6 +8,7 @@ function Options({
   setDirection,
   clearBoard,
   setResults,
+  setBoard,
 }) {
   const [calculating, setCalculating] = useState(false);
   const [validBoard, setValidBoard] = useState(false);
@@ -32,8 +33,8 @@ function Options({
     if (inputtedBoard.length === 0) {
       return
     }
-    
-    setInputtedBoard("")
+    setBoard(JSON.parse(inputtedBoard));
+    setInputtedBoard("");
     event.preventDefault();
   }
 
@@ -72,10 +73,10 @@ function Options({
         <form onSubmit={handleSubmit} >
         <input type="text" value={inputtedBoard} 
           onChange={(e) => setInputtedBoard(e.target.value)} />
-        <button onClick={handleCopy}>
-          COPY BOARD
-        </button>
         </form>
+        <button onClick={handleCopy}>
+          COPY
+        </button>
       </div>
     </div>
   );
