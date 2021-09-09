@@ -1,6 +1,7 @@
 import '../css/results.css';
 
 function ResultRoute({ result }) {
+  const affectionPoints = Math.round((result.state.food + result.state.drink + result.state.entertainment) / 6);
   return (
     <div className="result-route-wrapper">
       <div className="result-route">
@@ -25,6 +26,9 @@ function ResultRoute({ result }) {
           </div>
           <div>
             <span>Time:</span><span>{result.state.time}</span>
+          </div>
+          <div>
+            <span>Affection Points:</span><span>{affectionPoints}</span>
           </div>
         </div>
       </div>

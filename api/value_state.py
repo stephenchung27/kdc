@@ -17,7 +17,7 @@ class ValueState:
 
     @property
     def total_value(self):
-        return self.fuel + self.food + self.drink + self.entertainment
+        return self.food + self.drink + self.entertainment
 
     @property
     def valid(self):

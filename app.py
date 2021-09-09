@@ -1,6 +1,7 @@
 import os
 from flask import Flask, request, jsonify, send_from_directory
 from api.kdc import KarutaDateCalculator
+from datetime import datetime
 
 app = Flask(__name__, static_folder="build")
 
@@ -18,7 +19,13 @@ def index(path):
 def calculate():
     board = request.json
 
+    duration = datetime.now()
+
     kdc = KarutaDateCalculator()
     kdc(board, board["direction"])
+
+    duration = datetime.now() - duration
+
+    app.logger.info("Took {} seconds".format(duration.seconds))
 
     return jsonify(kdc.optimal_route)

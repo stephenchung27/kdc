@@ -17,11 +17,13 @@ function Options({
 
   async function calculate() {
     setCalculating(true);
+
     const response = await fetch("./calculate", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(board)
     });
+
     response.json().then((data) => {
       console.log(data);
       setResults(data);

@@ -50,6 +50,10 @@ blank_board = {
     "direction": Direction.L
 }
 
+eric_5 = {"horizontal_roads":[[True,True,True,True,True],[True,True,False,True,True],[True,False,True,True,True],[True,True,True,True,True],[False,True,True,True,True],[True,True,True,True,True],[False,True,True,True,True],[True,True,True,True,True]],"vertical_roads":[[True,False,True,True,True,True],[True,True,True,True,True,True],[True,True,True,True,False,True],[True,True,False,False,True,True],[True,True,False,False,False,True],[True,True,True,False,True,True],[True,True,True,True,True,True]],"board_spaces":[[None,"Gas Station",None,None,None],["Gas Station","Ballroom",None,None,None],[None,None,None,None,"Theatre"],[None,"Nightclub","Italian Restaurant",None,"Juice Bar"],["Fair","Airport",None,"Gas Station","Sandwich Shop"],[None,"Coffee House",None,None,"Flower Garden"],[None,"Taco Stand",None,None,"Home"]],"direction":"Right"}
+
+stephen_19 = {"horizontal_roads":[[True,True,True,True,True],[True,False,True,True,True],[False,True,False,True,True],[True,True,False,True,True],[True,True,True,True,True],[True,True,True,True,True],[True,True,False,True,True],[True,True,True,True,True]],"vertical_roads":[[True,True,True,False,False,True],[True,True,True,True,True,True],[True,True,True,True,True,True],[True,False,True,True,False,True],[True,False,True,False,False,True],[True,True,True,True,True,True],[True,True,True,True,True,True]],"board_spaces":[[None,"Taco Stand","Juice Bar",None,None],[None,None,"Nightclub",None,None],["Gas Station","Ballroom","Gas Station",None,None],["Sandwich Shop","Italian Restaurant","Theatre",None,"Home"],[None,None,"Fair",None,None],["Gas Station","Coffee House","Airport",None,None],["Flower Garden",None,None,None,None]],"direction":"Left"}
+
 stephen_18 = {
     "horizontal_roads": [
         [True, True, True, True, True],
@@ -82,7 +86,7 @@ stephen_18 = {
     "direction": Direction.L
 }
 
-board = stephen_18
+board = eric_5
 
 stephen_17 = {
     "horizontal_roads": [
