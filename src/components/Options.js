@@ -67,7 +67,7 @@ function Options({
       </div>
       <div className={`copy-message${showMessage ? "" : " hidden"}`}
         onTransitionEnd={handleTransitionEnd}>
-        COPIED
+        BOARD WAS COPIED
       </div>
       <div className="copy-options">
         <form onSubmit={handleSubmit} >
